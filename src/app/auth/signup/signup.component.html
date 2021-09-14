@@ -7,7 +7,7 @@
           <h4>Register</h4>
         </div>
         <div class="card-body">
-          <form>
+          <form [formGroup]="signupForm">
             <div class="form-group row">
               <label
                 for="email_address"
@@ -19,10 +19,17 @@
                   type="text"
                   id="email_address"
                   class="form-control"
-                  name="email-address"
+                  [formControlName]="'email'"
                   required
                   autofocus
                 />
+                <span
+                  *ngIf="
+                    !signupForm.get('email').valid &&
+                    signupForm.get('email').touched
+                  "
+                  >Please provide valid email</span
+                >
               </div>
             </div>
 
@@ -31,7 +38,20 @@
                 >User Name</label
               >
               <div class="col-md-6">
-                <input type="text" class="form-control" required autofocus />
+                <input
+                  type="text"
+                  [formControlName]="'username'"
+                  class="form-control"
+                  required
+                  autofocus
+                />
+                <span
+                  *ngIf="
+                    !signupForm.get('username').valid &&
+                    signupForm.get('username').touched
+                  "
+                  >Please provide valid username</span
+                >
               </div>
             </div>
 
@@ -46,9 +66,16 @@
                   type="password"
                   id="password"
                   class="form-control"
-                  name="password"
+                  [formControlName]="'password'"
                   required
                 />
+                <span
+                  *ngIf="
+                    !signupForm.get('password').valid &&
+                    signupForm.get('password').touched
+                  "
+                  >Please provide valid password</span
+                >
               </div>
             </div>
 
