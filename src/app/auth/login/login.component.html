@@ -22,6 +22,13 @@
                   required
                   autofocus
                 />
+                <span
+                  *ngIf="
+                    !loginForm.get('username').valid &&
+                    loginForm.get('username').touched
+                  "
+                  >Please enter valid username</span
+                >
               </div>
             </div>
 
@@ -40,6 +47,13 @@
                   name="password"
                   required
                 />
+                <span
+                  *ngIf="
+                    !loginForm.get('password').valid &&
+                    loginForm.get('password').touched
+                  "
+                  >Password can not be empty</span
+                >
               </div>
             </div>
 
