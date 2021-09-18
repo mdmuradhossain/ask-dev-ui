@@ -1,6 +1,6 @@
 export class Post {
   id: number;
-  postTitle: string;
+  questionName: string;
   description: string;
   voteCount: number;
   username: string;
