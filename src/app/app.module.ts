@@ -12,6 +12,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './auth/token-interceptor';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TokenInterceptor } from './auth/token-interceptor';
     HeaderComponent,
     SignupComponent,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

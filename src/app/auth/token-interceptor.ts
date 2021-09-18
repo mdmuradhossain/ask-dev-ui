@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { catchError, switchMap, take, filter } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { LoginResponse } from './login/login-response';
 
@@ -38,28 +38,38 @@ export class TokenInterceptor implements HttpInterceptor {
       })
     );
   }
-  addToken(req: HttpRequest<any>, jwtToken: string) {
-    return req.clone({
-      headers: req.headers.set('Authorization', 'Bearer ' + jwtToken),
-    });
-  }
 
-  private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler) {
+  private handleAuthErrors(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     if (!this.isTokenRefreshing) {
       this.isTokenRefreshing = true;
       this.refreshTokenSubject.next(null);
 
       return this.authService.refreshToken().pipe(
-        switchMap((refreshTokenResponse: LoginResponse) => {
+        switchMap((refreshTokenResponse) => {
           this.isTokenRefreshing = false;
-          this.refreshTokenSubject.next(
-            refreshTokenResponse.authenticationToken
-          );
+          this.refreshTokenSubject.next(refreshTokenResponse);
+          return next.handle(this.addToken(req, null));
+        })
+      );
+    } else {
+      return this.refreshTokenSubject.pipe(
+        filter((result) => result !== null),
+        take(1),
+        switchMap((res) => {
           return next.handle(
-            this.addToken(req, refreshTokenResponse.authenticationToken)
+            this.addToken(req, this.authService.getJwtToken())
           );
         })
       );
     }
+  }
+
+  addToken(req: HttpRequest<any>, jwtToken: string) {
+    return req.clone({
+      headers: req.headers.set('Authorization', 'Bearer ' + jwtToken),
+    });
   }
 }
