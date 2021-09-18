@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginRequest } from './login/login-request';
 import { LoginResponse } from './login/login-response';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from 'ngx-webstorage';
 
@@ -43,5 +43,43 @@ export class AuthService {
           return true;
         })
       );
+  }
+
+  refreshToken() {
+    const refreshTokenRequest = {
+      refreshToken: this.getRefreshToken(),
+      username: this.getUsername(),
+    };
+
+    return this.httpClient
+      .post<LoginResponse>(
+        `${this.baseUrl}/auth/refresh/token`,
+        refreshTokenRequest
+      )
+      .pipe(
+        map((response) => {
+          this.localStorage.store(
+            'authenticationToken',
+            response.authenticationToken
+          );
+          this.localStorage.store('expiresAt', response.expiresAt);
+        })
+      );
+  }
+
+  getJwtToken() {
+    return this.localStorage.retrieve('authenticationToken');
+  }
+
+  getRefreshToken() {
+    return this.localStorage.retrieve('refreshToken');
+  }
+
+  getUsername() {
+    return this.localStorage.retrieve('username');
+  }
+
+  getExpirationTime() {
+    return this.localStorage.retrieve('expiresAt');
   }
 }
