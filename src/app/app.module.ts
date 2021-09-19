@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { VoteButtonComponent } from './vote-button/vote-button.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { CategorySideBarComponent } from './category-side-bar/category-side-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     PostComponent,
     VoteButtonComponent,
     SideBarComponent,
+    CategorySideBarComponent,
   ],
   imports: [
     BrowserModule,

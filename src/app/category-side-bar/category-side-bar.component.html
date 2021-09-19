@@ -1,0 +1,13 @@
+<div class="sidebar-view-subreddit">
+  <div style="color: black; font-weight: bold">Browse Categories</div>
+  <hr />
+  <span *ngFor="let category of categories">
+    <span class="subreddit-text"
+      ><a href="/view-subreddit/{{ category.id }}">{{ category.name }}</a></span
+    >
+    <hr />
+  </span>
+  <div style="text-align: center" *ngIf="displayViewAll">
+    <a style="font-weight: bold" routerLink="/categories">View All</a>
+  </div>
+</div>
