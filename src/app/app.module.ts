@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './auth/token-interceptor';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
+import { VoteButtonComponent } from './vote-button/vote-button.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PostComponent } from './post/post.component';
     LoginComponent,
     HomeComponent,
     PostComponent,
+    VoteButtonComponent,
   ],
   imports: [
     BrowserModule,
