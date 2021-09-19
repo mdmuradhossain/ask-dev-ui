@@ -15,6 +15,7 @@ import { TokenInterceptor } from './auth/token-interceptor';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { VoteButtonComponent } from './vote-button/vote-button.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { VoteButtonComponent } from './vote-button/vote-button.component';
     HomeComponent,
     PostComponent,
     VoteButtonComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,
