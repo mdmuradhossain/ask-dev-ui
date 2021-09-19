@@ -17,6 +17,7 @@ import { PostComponent } from './post/post.component';
 import { VoteButtonComponent } from './vote-button/vote-button.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { CategorySideBarComponent } from './category-side-bar/category-side-bar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CategorySideBarComponent } from './category-side-bar/category-side-bar.
     NgxWebstorageModule.forRoot(),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [
     {
