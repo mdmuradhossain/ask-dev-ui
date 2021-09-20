@@ -20,6 +20,7 @@ import { CategorySideBarComponent } from './category-side-bar/category-side-bar.
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
     CategorySideBarComponent,
     CreateCategoryComponent,
     CreatePostComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,
