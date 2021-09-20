@@ -1,13 +1,12 @@
 <div class="reddit-body">
   <div class="container">
     <div class="row">
-      <hr />
       <div class="col-md-9">
         <!-- Display Posts-->
         <div class="row post" *ngFor="let post of posts$">
-          <app-vote-button [post]="post"></app-vote-button>
           <!-- Section to Display Post Information-->
           <div class="col-md-11">
+            <app-vote-button [post]="post"></app-vote-button>
             <span class="subreddit-info">
               <span class="subreddit-text"
                 ><a

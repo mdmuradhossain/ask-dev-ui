@@ -18,6 +18,8 @@ import { VoteButtonComponent } from './vote-button/vote-button.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { CategorySideBarComponent } from './category-side-bar/category-side-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CreateCategoryComponent } from './category/create-category/create-category.component';
+import { CreatePostComponent } from './post/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     VoteButtonComponent,
     SideBarComponent,
     CategorySideBarComponent,
+    CreateCategoryComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,
