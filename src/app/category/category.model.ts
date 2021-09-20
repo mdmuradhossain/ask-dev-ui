@@ -1,7 +1,6 @@
-
-export class Category{
-    id?:number;
-    name:string;
-    description:string;
-    numberOfPosts?:number;
+export class Category {
+  id?: number;
+  name: string;
+  description: string;
+  numberOfPosts?: number;
 }

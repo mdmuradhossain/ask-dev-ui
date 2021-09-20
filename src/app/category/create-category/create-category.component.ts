@@ -37,7 +37,7 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   createCategory() {
-    this.category.name = this.createCategoryForm.get('categoryName').value;
+    this.category.name = this.createCategoryForm.get('name').value;
     this.category.description =
       this.createCategoryForm.get('description').value;
 

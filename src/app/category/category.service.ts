@@ -17,7 +17,7 @@ export class CategoryService {
 
   createCategory(category: Category) {
     return this.httpClient.post<Category>(
-      `${this.baseUrl}/api/categories`,
+      `${this.baseUrl}/categories`,
       category
     );
   }
