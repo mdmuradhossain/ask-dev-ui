@@ -14,4 +14,8 @@ export class PostService {
   getAllPosts(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(`${this.baseUrl}/questions`);
   }
+
+  createPost(post: Post): Observable<any> {
+    return this.httpClient.post<Post>(`${this.baseUrl}/questions`, post);
+  }
 }
