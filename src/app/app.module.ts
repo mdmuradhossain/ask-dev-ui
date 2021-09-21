@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     FontAwesomeModule,
+    EditorModule,
   ],
   providers: [
     {
