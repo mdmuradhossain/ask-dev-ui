@@ -11,7 +11,7 @@
             <span class="subreddit-text"
               ><a class="post-url" href="">{{ post.categoryName }}</a></span
             >
-            <span>
+            <!-- <span>
               . Posted
               <span> {{ post.duration }} </span>
               by
@@ -21,7 +21,7 @@
               <a *ngIf="post.username != null" class="username" href="">{{
                 post.username
               }}</a>
-            </span>
+            </span> -->
           </span>
           <hr />
           <a routerLink="post.url" class="post-title">{{
@@ -34,8 +34,8 @@
       </div>
     </div>
     <div class="col-md-3">
-      <sidebar></sidebar>
-      <sidebar-view-subreddit></sidebar-view-subreddit>
+      <app-side-bar></app-side-bar>
+      <app-category-side-bar></app-category-side-bar>
     </div>
   </div>
 </div>

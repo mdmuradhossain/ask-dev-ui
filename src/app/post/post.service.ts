@@ -20,4 +20,8 @@ export class PostService {
       withCredentials: true,
     });
   }
+
+  getPost(id: number) {
+    return this.httpClient.get<Post>(`${this.baseUrl}/questions/${id}`);
+  }
 }
