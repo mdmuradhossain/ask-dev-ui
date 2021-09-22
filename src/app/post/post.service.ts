@@ -16,6 +16,8 @@ export class PostService {
   }
 
   createPost(post: Post): Observable<any> {
-    return this.httpClient.post<Post>(`${this.baseUrl}/questions`, post);
+    return this.httpClient.post<Post>(`${this.baseUrl}/questions`, post, {
+      withCredentials: true,
+    });
   }
 }
