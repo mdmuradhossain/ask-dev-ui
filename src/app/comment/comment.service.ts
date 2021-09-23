@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Comment } from '@angular/compiler';
+import { Comment } from '../comment/comment.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,6 +18,6 @@ export class CommentService {
   }
 
   postComment(comment: Comment): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/comments`, comment);
+    return this.httpClient.post<any>(`${this.baseUrl}/answers`, comment);
   }
 }

@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
 import { CommentService } from 'src/app/comment/comment.service';
 import { Post } from '../post.model';
 import { PostService } from '../post.service';
-
+import { Comment } from 'src/app/comment/comment.model';
 @Component({
   selector: 'app-view-post',
   templateUrl: './view-post.component.html',
