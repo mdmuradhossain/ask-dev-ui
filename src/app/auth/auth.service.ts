@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterRequest } from './signup/register-request';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginRequest } from './login/login-request';
 import { LoginResponse } from './login/login-response';
@@ -14,6 +14,14 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class AuthService {
   private baseUrl = environment.apiBaseUrl;
+
+  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
+  @Output() username: EventEmitter<string> = new EventEmitter();
+
+  refreshTokenRequest = {
+    refreshToken: this.getRefreshToken(),
+    username: this.getUsername(),
+  };
 
   constructor(
     private httpClient: HttpClient,
@@ -40,21 +48,38 @@ export class AuthService {
           this.localStorage.store('username', data.username);
           this.localStorage.store('refreshToken', data.refreshToken);
           this.localStorage.store('expiresAt', data.expiresAt);
+
+          this.isLoggedIn.emit(true);
+          this.getUsername.emit(data.username);
           return true;
         })
       );
   }
 
-  refreshToken() {
-    const refreshTokenRequest = {
-      refreshToken: this.getRefreshToken(),
-      username: this.getUsername(),
-    };
+  logOut() {
+    this.httpClient
+      .post(`${this.baseUrl}/auth/logout`, this.refreshTokenRequest, {
+        responseType: 'text',
+      })
+      .subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (err) => {
+          throwError(err);
+        }
+      );
+    this.localStorage.clear('authenticationToken');
+    this.localStorage.clear('username');
+    this.localStorage.clear('refreshToken');
+    this.localStorage.clear('expiresAt');
+  }
 
+  refreshToken() {
     return this.httpClient
       .post<LoginResponse>(
         `${this.baseUrl}/auth/refresh/token`,
-        refreshTokenRequest
+        this.refreshTokenRequest
       )
       .pipe(
         map((response) => {
@@ -81,5 +106,9 @@ export class AuthService {
 
   getExpirationTime() {
     return this.localStorage.retrieve('expiresAt');
+  }
+
+  isLoggedIn() {
+    return this.getJwtToken() != null;
   }
 }
