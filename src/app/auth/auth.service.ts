@@ -16,7 +16,7 @@ export class AuthService {
   private baseUrl = environment.apiBaseUrl;
 
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
-  @Output() username: EventEmitter<string> = new EventEmitter();
+  @Output() username: EventEmitter<String> = new EventEmitter();
 
   refreshTokenRequest = {
     refreshToken: this.getRefreshToken(),
@@ -49,8 +49,8 @@ export class AuthService {
           this.localStorage.store('refreshToken', data.refreshToken);
           this.localStorage.store('expiresAt', data.expiresAt);
 
-          this.isLoggedIn.emit(true);
-          this.getUsername.emit(data.username);
+          this.loggedIn.emit(true);
+          this.username.emit(data.username);
           return true;
         })
       );
