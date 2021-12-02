@@ -24,4 +24,10 @@ export class PostService {
   getPost(id: number): Observable<Post> {
     return this.httpClient.get<Post>(`${this.baseUrl}/questions/${id}`);
   }
+
+  getAllPostsByUser(name: string): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(
+      `${this.baseUrl}/api/questions/by-user` + name
+    );
+  }
 }
