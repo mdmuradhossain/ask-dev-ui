@@ -23,6 +23,7 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ViewPostComponent } from './post/view-post/view-post.component';
+import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ViewPostComponent } from './post/view-post/view-post.component';
     CreatePostComponent,
     CategoryListComponent,
     ViewPostComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
