@@ -21,13 +21,15 @@
                   post.userName
                 }}</a></span
               >
-              <span>  {{ post.duration }}</span>
+              <span> {{ post.duration }}</span>
             </span>
             <hr />
             <div class="post-title">
-              <a class="postname" routerLink="/view-post/{{ post.id }}">{{
-                post.questionName
-              }}</a>
+              <a
+                class="postname"
+                routerLink="/view-post/{{ post.slug }}/{{ post.id }}"
+                >{{ post.questionName }}</a
+              >
             </div>
             <div>
               <p class="post-text">{{ post.description | slice: 0:200 }}...</p>

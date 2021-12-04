@@ -34,7 +34,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'view-post/:id',
+    path: 'view-post/:slug/:id',
     component: ViewPostComponent,
   },
 ];
