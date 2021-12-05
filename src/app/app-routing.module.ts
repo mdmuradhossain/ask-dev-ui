@@ -32,7 +32,10 @@ const routes: Routes = [
     path: 'categories',
     component: CategoryListComponent,
   },
-
+  {
+    path: 'categories/:categoryName',
+    component: CategoryListComponent,
+  },
   {
     path: 'view-post/:slug/:id',
     component: ViewPostComponent,
